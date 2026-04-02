@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "id_usuario": 1,
+    "fecha": "2026-04-01",
+    "total": 575,
+    "direccion": "Av. Libertador 1000",
+    "productos": [
+      {
+        "id_producto": 3,
+        "cantidad": 1,
+        "precio_unitario": 575
+      }
+    ],
+    "entregado": true,
+    "metodo_pago": "efectivo"
+  },
+  {
+    "id": 2,
+    "id_usuario": 2,
+    "fecha": "2026-04-02",
+    "total": 495,
+    "direccion": "Calle Corrientes 1234",
+    "productos": [
+      {
+        "id_producto": 2,
+        "cantidad": 1,
+        "precio_unitario": 495
+      }
+    ],
+    "entregado": false,
+    "metodo_pago": "transferencia"
+  },
+  {
+    "id": 3,
+    "id_usuario": 1,
+    "fecha": "2026-04-03",
+    "total": 715,
+    "direccion": "Av. Santa Fe 567",
+    "productos": [
+      {
+        "id_producto": 5,
+        "cantidad": 1,
+        "precio_unitario": 715
+      }
+    ],
+    "entregado": false,
+    "metodo_pago": "tarjeta"
+  }
+]

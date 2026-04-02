@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "nombre": "Fabricio",
+    "apellido": "Solis",
+    "email": "fabricio@gmail.com",
+    "contraseña": "1234",
+    "activo": true,
+    "fecha_registro": "2026-03-20"
+  },
+  {
+    "id": 2,
+    "nombre": "Lucia",
+    "apellido": "Martinez",
+    "email": "lucia@gmail.com",
+    "contraseña": "abcd",
+    "activo": true,
+    "fecha_registro": "2026-03-22"
+  },
+  {
+    "id": 3,
+    "nombre": "Carlos",
+    "apellido": "Gomez",
+    "email": "carlos@gmail.com",
+    "contraseña": "pass123",
+    "activo": false,
+    "fecha_registro": "2026-03-25"
+  }
+]
