@@ -4,7 +4,7 @@
     "nombre": "Fabricio",
     "apellido": "Solis",
     "email": "fabricio@gmail.com",
-    "contraseña": "1234",
+    "contrasena": "1234",
     "activo": true,
     "fecha_registro": "2026-03-20"
   },
@@ -13,7 +13,7 @@
     "nombre": "Lucia",
     "apellido": "Martinez",
     "email": "lucia@gmail.com",
-    "contraseña": "abcd",
+    "contrasena": "abcd",
     "activo": true,
     "fecha_registro": "2026-03-22"
   },
@@ -22,8 +22,13 @@
     "nombre": "Carlos",
     "apellido": "Gomez",
     "email": "carlos@gmail.com",
-    "contraseña": "pass123",
+    "contrasena": "pass123",
     "activo": false,
     "fecha_registro": "2026-03-25"
+  },
+  {
+    "nombre": "Pedro",
+    "email": "pedro@gmail.com",
+    "id": 4
   }
 ]
