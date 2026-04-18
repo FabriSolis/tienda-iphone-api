@@ -4,7 +4,6 @@ import { readFile, writeFile } from "fs/promises";
 const router = Router();
 const PATH = "./data/clientes.json";
 
-
 async function getClientes() {
   const raw = await readFile(PATH, "utf-8");
   return JSON.parse(raw);
@@ -13,7 +12,6 @@ async function getClientes() {
 async function saveClientes(data) {
   await writeFile(PATH, JSON.stringify(data, null, 2));
 }
-
 
 // todos
 router.get("/", async (req, res) => {
@@ -33,7 +31,7 @@ router.get("/:id", async (req, res) => {
   res.json(cliente);
 });
 
-// buscar 
+// buscar
 router.post("/buscar", async (req, res) => {
   const { nombre } = req.body;
   const clientes = await getClientes();
@@ -67,7 +65,6 @@ router.post("/", async (req, res) => {
   res.status(201).json(nuevo);
 });
 
-
 router.put("/:id", async (req, res) => {
   const clientes = await getClientes();
   const index = clientes.findIndex((c) => c.id == req.params.id);
@@ -83,21 +80,25 @@ router.put("/:id", async (req, res) => {
   res.json(clientes[index]);
 });
 
+router.delete("/:id", (req, res) => {
+  const clientes = leerJSON(RUTA_CLIENTES);
+  const ventas = leerJSON(RUTA_VENTAS);
 
-router.delete("/:id", async (req, res) => {
-  let clientes = await getClientes();
+  const clienteId = parseInt(req.params.id);
 
-  const existe = clientes.some((c) => c.id == req.params.id);
+  const tieneVentas = ventas.some((v) => v.id_usuario === clienteId);
 
-  if (!existe) {
-    return res.status(404).json({ error: "Cliente no encontrado" });
+  if (tieneVentas) {
+    return res.status(400).json({
+      mensaje: "No se puede eliminar, el cliente tiene ventas asociadas",
+    });
   }
 
-  clientes = clientes.filter((c) => c.id != req.params.id);
+  const nuevos = clientes.filter((c) => c.id !== clienteId);
 
-  await saveClientes(clientes);
+  guardarJSON(RUTA_CLIENTES, nuevos);
 
-  res.json({ mensaje: "Cliente eliminado" });
+  res.json({ mensaje: "Cliente eliminado correctamente" });
 });
 
 export default router;
