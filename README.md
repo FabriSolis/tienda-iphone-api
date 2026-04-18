@@ -40,21 +40,21 @@ Clientes
 
 Productos
 
-- GET /productos obtener todos
-- GET /productos/:id obtener por id
-- POST /productos crear producto
-- POST /productos/buscar buscar productos por nombre
-- PUT /productos/ actualizar producto
-- DELETE /productos/ eliminar producto (si no está asociado a ventas)
+GET /productos → obtener todos
+GET /productos/:id → obtener por id
+POST /productos → crear producto
+POST /productos/buscar → buscar productos por nombre
+PUT /productos/:id → actualizar producto
+DELETE /productos/:id → eliminar producto (si no está asociado a ventas)
 
 Ventas
 
-- GET /ventas obtener todas
-- GET /ventas/:id obtener por id
-- POST /ventas crear venta
-- POST /ventas/buscar buscar ventas por usuario
-- PUT /ventas/ actualizar venta
-- DELETE /ventas/ eliminar venta
+GET /ventas → obtener todas
+GET /ventas/:id → obtener por id
+POST /ventas → crear venta
+POST /ventas/buscar → buscar ventas por usuario
+PUT /ventas/:id → actualizar venta
+DELETE /ventas/:id → eliminar venta
 
 Integridad
 No se permite eliminar un cliente si tiene ventas asociadas.
