@@ -21,3 +21,33 @@ El sistema simula mi tienda de iPhones donde:
 - Las ventas registran las compras realizadas
 
 Trabajo práctico - Primera entrega
+
+- Node.js
+- Express
+
+npm install
+
+npm run dev
+
+### Clientes
+
+GET /clientes
+GET /clientes/:id
+POST /clientes
+POST /clientes/buscar
+PUT /clientes/:id
+DELETE /clientes/:id
+
+### Productos
+
+GET /productos
+POST /productos
+PUT /productos/:id
+DELETE /productos/:id
+
+### Ventas
+
+GET /ventas
+POST /ventas
+PUT /ventas/:id
+DELETE /ventas/:id
