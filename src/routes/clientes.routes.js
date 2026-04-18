@@ -4,7 +4,6 @@ import { readFile, writeFile } from "fs/promises";
 const router = Router();
 const PATH = "./data/clientes.json";
 
-// ================== FUNCIONES ==================
 
 async function getClientes() {
   const raw = await readFile(PATH, "utf-8");
@@ -15,7 +14,6 @@ async function saveClientes(data) {
   await writeFile(PATH, JSON.stringify(data, null, 2));
 }
 
-// ================== GET ==================
 
 // todos
 router.get("/", async (req, res) => {
@@ -35,9 +33,7 @@ router.get("/:id", async (req, res) => {
   res.json(cliente);
 });
 
-// ================== POST ==================
-
-// buscar (como pide la consigna)
+// buscar 
 router.post("/buscar", async (req, res) => {
   const { nombre } = req.body;
   const clientes = await getClientes();
@@ -71,7 +67,6 @@ router.post("/", async (req, res) => {
   res.status(201).json(nuevo);
 });
 
-// ================== PUT ==================
 
 router.put("/:id", async (req, res) => {
   const clientes = await getClientes();
@@ -88,7 +83,6 @@ router.put("/:id", async (req, res) => {
   res.json(clientes[index]);
 });
 
-// ================== DELETE ==================
 
 router.delete("/:id", async (req, res) => {
   let clientes = await getClientes();

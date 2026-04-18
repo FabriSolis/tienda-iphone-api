@@ -15,8 +15,6 @@ async function saveProductos(data) {
   await writeFile(PATH, JSON.stringify(data, null, 2));
 }
 
-// ================= GET =================
-
 // todos
 router.get("/", async (req, res) => {
   const productos = await getProductos();
@@ -35,8 +33,6 @@ router.get("/:id", async (req, res) => {
   res.json(producto);
 });
 
-// ================= POST =================
-
 // crear producto
 router.post("/", async (req, res) => {
   const productos = await getProductos();
@@ -53,8 +49,6 @@ router.post("/", async (req, res) => {
   res.status(201).json(nuevo);
 });
 
-// ================= PUT =================
-
 router.put("/:id", async (req, res) => {
   const productos = await getProductos();
   const index = productos.findIndex((p) => p.id == req.params.id);
@@ -69,8 +63,6 @@ router.put("/:id", async (req, res) => {
 
   res.json(productos[index]);
 });
-
-// ================= DELETE =================
 
 router.delete("/:id", async (req, res) => {
   let productos = await getProductos();
