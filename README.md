@@ -20,8 +20,6 @@ El sistema simula mi tienda de iPhones donde:
 - Los productos tienen estado (disponible, reservado, vendido)
 - Las ventas registran las compras realizadas
 
-Trabajo práctico - Primera entrega
-
 - Node.js
 - Express
 
@@ -29,25 +27,34 @@ npm install
 
 npm run dev
 
-### Clientes
+Endpoints
 
-GET /clientes
-GET /clientes/:id
-POST /clientes
-POST /clientes/buscar
-PUT /clientes/:id
-DELETE /clientes/:id
+Clientes
 
-### Productos
+- GET /clientes obtener todos
+- GET /clientes/:id obtener por id
+- POST /clientes crear cliente
+- POST /clientes/buscar buscar cliente por nombre
+- PUT /clientes/:id actualizar cliente
+- DELETE /clientes/:id eliminar cliente (con integridad)
 
-GET /productos
-POST /productos
-PUT /productos/:id
-DELETE /productos/:id
+Productos
 
-### Ventas
+- GET /productos obtener todos
+- GET /productos/:id obtener por id
+- POST /productos crear producto
+- POST /productos/buscar buscar productos por nombre
+- PUT /productos/ actualizar producto
+- DELETE /productos/ eliminar producto (si no está asociado a ventas)
 
-GET /ventas
-POST /ventas
-PUT /ventas/:id
-DELETE /ventas/:id
+Ventas
+
+- GET /ventas obtener todas
+- GET /ventas/:id obtener por id
+- POST /ventas crear venta
+- POST /ventas/buscar buscar ventas por usuario
+- PUT /ventas/ actualizar venta
+- DELETE /ventas/ eliminar venta
+
+Integridad
+No se permite eliminar un cliente si tiene ventas asociadas.

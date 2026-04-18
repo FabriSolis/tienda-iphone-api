@@ -49,6 +49,17 @@ router.post("/", async (req, res) => {
   res.status(201).json(nuevo);
 });
 
+router.post("/buscar", async (req, res) => {
+  const { nombre } = req.body;
+  const productos = await getProductos();
+
+  const resultados = productos.filter((p) =>
+    p.nombre.toLowerCase().includes(nombre.toLowerCase()),
+  );
+
+  res.json(resultados);
+});
+
 router.put("/:id", async (req, res) => {
   const productos = await getProductos();
   const index = productos.findIndex((p) => p.id == req.params.id);
@@ -65,17 +76,26 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  let productos = await getProductos();
+  const productos = await getProductos();
 
-  const existe = productos.some((p) => p.id == req.params.id);
+  const rawVentas = await readFile("./data/ventas.json", "utf-8");
+  const ventas = JSON.parse(rawVentas);
 
-  if (!existe) {
-    return res.status(404).json({ error: "Producto no encontrado" });
+  const productoId = parseInt(req.params.id);
+
+  const tieneVentas = ventas.some((v) =>
+    v.productos.some((p) => p.id_producto === productoId),
+  );
+
+  if (tieneVentas) {
+    return res.status(400).json({
+      error: "No se puede eliminar, está en ventas",
+    });
   }
 
-  productos = productos.filter((p) => p.id != req.params.id);
+  const nuevos = productos.filter((p) => p.id !== productoId);
 
-  await saveProductos(productos);
+  await saveProductos(nuevos);
 
   res.json({ mensaje: "Producto eliminado" });
 });

@@ -80,9 +80,11 @@ router.put("/:id", async (req, res) => {
   res.json(clientes[index]);
 });
 
-router.delete("/:id", (req, res) => {
-  const clientes = leerJSON(RUTA_CLIENTES);
-  const ventas = leerJSON(RUTA_VENTAS);
+router.delete("/:id", async (req, res) => {
+  const clientes = await getClientes();
+
+  const rawVentas = await readFile("./data/ventas.json", "utf-8");
+  const ventas = JSON.parse(rawVentas);
 
   const clienteId = parseInt(req.params.id);
 
@@ -90,13 +92,13 @@ router.delete("/:id", (req, res) => {
 
   if (tieneVentas) {
     return res.status(400).json({
-      mensaje: "No se puede eliminar, el cliente tiene ventas asociadas",
+      mensaje: "No se puede eliminar, tiene ventas asociadas",
     });
   }
 
   const nuevos = clientes.filter((c) => c.id !== clienteId);
 
-  guardarJSON(RUTA_CLIENTES, nuevos);
+  await saveClientes(nuevos);
 
   res.json({ mensaje: "Cliente eliminado correctamente" });
 });

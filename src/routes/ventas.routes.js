@@ -49,6 +49,15 @@ router.post("/", async (req, res) => {
   res.status(201).json(nueva);
 });
 
+router.post("/buscar", async (req, res) => {
+  const { id_usuario } = req.body;
+  const ventas = await getVentas();
+
+  const resultados = ventas.filter((v) => v.id_usuario == id_usuario);
+
+  res.json(resultados);
+});
+
 router.put("/:id", async (req, res) => {
   const ventas = await getVentas();
   const index = ventas.findIndex((v) => v.id == req.params.id);
@@ -65,17 +74,11 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  let ventas = await getVentas();
+  const ventas = await getVentas();
 
-  const existe = ventas.some((v) => v.id == req.params.id);
+  const nuevas = ventas.filter((v) => v.id != req.params.id);
 
-  if (!existe) {
-    return res.status(404).json({ error: "Venta no encontrada" });
-  }
-
-  ventas = ventas.filter((v) => v.id != req.params.id);
-
-  await saveVentas(ventas);
+  await saveVentas(nuevas);
 
   res.json({ mensaje: "Venta eliminada" });
 });
