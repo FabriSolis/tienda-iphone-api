@@ -1,60 +1,99 @@
-Tienda de iPhones - Estructuras JSON
+# Tienda Online de iPhone
 
-Este proyecto representa mi tienda de iPhones utilizando estructuras de datos en formato JSON.
+Proyecto desarrollado con Node.js, Express y React para la gestión y compra de productos.
 
-Se crearon tres archivos principales:
+## Tecnologías utilizadas
 
-- clientes.json
-- productos.json
-- ventas.json
-
-Se incluyen distintos tipos de datos:
-
-- Números (id, precio, total)
-- Texto (nombre, descripción, dirección)
-- Booleanos (activo, disponible, entregado)
-
-El sistema simula mi tienda de iPhones donde:
-
-- Los usuarios pueden comprar productos
-- Los productos tienen estado (disponible, reservado, vendido)
-- Las ventas registran las compras realizadas
-
+### Backend
 - Node.js
 - Express
+- JSON como base de datos
+- API REST
 
+### Frontend
+- React
+- Vite
+- Tailwind CSS
+- LocalStorage
+
+---
+
+# Funcionalidades
+
+## Productos
+- Listado de productos
+- Filtrado por categoría
+- Visualización de precio y descripción
+
+## Carrito
+- Agregar productos
+- Eliminar productos
+- Guardado en localStorage
+- Cálculo de total
+
+## Compras
+- Generación de ventas
+- Envío de datos al backend
+- Persistencia en archivo JSON
+
+
+---
+
+# Instalación
+
+## Backend
+
+```bash
 npm install
+node index.js
+```
 
+Servidor:
+
+```bash
+http://localhost:3000
+```
+
+---
+
+## Frontend
+
+```bash
+cd frontend
+npm install
 npm run dev
+```
 
-Endpoints
+Aplicación:
 
-Clientes
+```bash
+http://localhost:5173
+```
 
-- GET /clientes obtener todos
-- GET /clientes/:id obtener por id
-- POST /clientes crear cliente
-- POST /clientes/buscar buscar cliente por nombre
-- PUT /clientes/:id actualizar cliente
-- DELETE /clientes/:id eliminar cliente (con integridad)
+---
 
-Productos
+# API REST
 
-- GET /productos → obtener todos
-- GET /productos/:id → obtener por id
-- POST /productos → crear producto
-- POST /productos/buscar → buscar productos por nombre
-- PUT /productos/:id → actualizar producto
-- DELETE /productos/:id → eliminar producto (si no está asociado a ventas)
+## Productos
 
-Ventas
+```bash
+GET /productos
+GET /productos/:id
+POST /productos
+PUT /productos/:id
+DELETE /productos/:id
+```
 
-- GET /ventas → obtener todas
-- GET /ventas/:id → obtener por id
-- POST /ventas → crear venta
-- POST /ventas/buscar → buscar ventas por usuario
-- PUT /ventas/:id → actualizar venta
-- DELETE /ventas/:id → eliminar venta
+## Ventas
 
-Integridad
-No se permite eliminar un cliente si tiene ventas asociadas.
+```bash
+GET /ventas
+POST /ventas
+```
+
+## Clientes
+
+```bash
+GET /clientes
+POST /clientes
+```
