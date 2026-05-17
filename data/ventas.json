@@ -126,5 +126,34 @@
     ],
     "fecha": "2026-05-17T19:31:51.770Z",
     "id": 5
+  },
+  {
+    "cliente": "Fabricio",
+    "productos": [
+      {
+        "id": 2,
+        "nombre": "iPhone 14 Pro",
+        "desc": "128GB - batería 88%",
+        "precio": 495,
+        "imagen": "iphone14pro.jpg",
+        "stock": 1,
+        "estado": "reservado",
+        "disponible": false,
+        "categoria": "iPhone"
+      },
+      {
+        "id": 5,
+        "nombre": "iPhone 15 Pro Max",
+        "desc": "256GB - batería 90%",
+        "precio": 715,
+        "imagen": "iphone15promax.jpg",
+        "stock": 1,
+        "estado": "reservado",
+        "disponible": false,
+        "categoria": "iPhone"
+      }
+    ],
+    "fecha": "2026-05-17T19:49:47.481Z",
+    "id": 6
   }
 ]
