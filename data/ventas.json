@@ -46,5 +46,85 @@
     ],
     "entregado": false,
     "metodo_pago": "tarjeta"
+  },
+  {
+    "cliente": "Fabricio",
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "iPhone 14",
+        "desc": "128GB - batería 84%",
+        "precio": 395,
+        "imagen": "iphone14.jpg",
+        "stock": 1,
+        "estado": "disponible",
+        "disponible": true,
+        "categoria": "iPhone"
+      },
+      {
+        "id": 5,
+        "nombre": "iPhone 15 Pro Max",
+        "desc": "256GB - batería 90%",
+        "precio": 715,
+        "imagen": "iphone15promax.jpg",
+        "stock": 1,
+        "estado": "reservado",
+        "disponible": false,
+        "categoria": "iPhone"
+      }
+    ],
+    "fecha": "2026-05-17T19:15:28.725Z",
+    "id": 4
+  },
+  {
+    "cliente": "Fabricio",
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "iPhone 14",
+        "desc": "128GB - batería 84%",
+        "precio": 395,
+        "imagen": "iphone14.jpg",
+        "stock": 1,
+        "estado": "disponible",
+        "disponible": true,
+        "categoria": "iPhone"
+      },
+      {
+        "id": 6,
+        "nombre": "iPhone 17 Pro Max",
+        "desc": "256GB - batería 100%",
+        "precio": 1200,
+        "imagen": "iphone17promax.jpg",
+        "stock": 1,
+        "estado": "disponible",
+        "disponible": true,
+        "categoria": "iPhone"
+      },
+      {
+        "id": 4,
+        "nombre": "iPhone 15 Pro",
+        "desc": "128GB - batería 85%",
+        "precio": 595,
+        "imagen": "iphone15pro.jpg",
+        "stock": 1,
+        "estado": "disponible",
+        "disponible": true,
+        "categoria": "iPhone"
+      },
+      {
+        "id": 5,
+        "nombre": "iPhone 15 Pro Max",
+        "desc": "256GB - batería 90%",
+        "precio": 715,
+        "imagen": "iphone15promax.jpg",
+        "stock": 1,
+        "estado": "reservado",
+        "disponible": false,
+        "categoria": "iPhone"
+      }
+    ],
+    "fecha": "2026-05-17T19:31:51.770Z",
+    "id": 5
   }
 ]

@@ -12,6 +12,7 @@
   "author": "Fabricio Solis",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.6",
     "dayjs": "^1.11.20",
     "express": "^5.2.1"
   },
