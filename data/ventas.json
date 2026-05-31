@@ -155,5 +155,17 @@
     ],
     "fecha": "2026-05-17T19:49:47.481Z",
     "id": 6
+  },
+  {
+    "cliente": "Fabricio",
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "iPhone 14",
+        "precio": 395
+      }
+    ],
+    "total": 395,
+    "id": 7
   }
 ]

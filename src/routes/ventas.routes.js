@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { readFile, writeFile } from "fs/promises";
+import verificarToken from "../middleware/verificarToken.js";
+import Venta from "../models/Venta.js";
 
 const router = Router();
 const PATH = "./data/ventas.json";
@@ -34,19 +36,20 @@ router.get("/:id", async (req, res) => {
 });
 
 // crear venta
-router.post("/", async (req, res) => {
-  const ventas = await getVentas();
-  const nueva = req.body;
+router.post("/", verificarToken, async (req, res) => {
+  try {
+    const nuevaVenta = new Venta(req.body);
 
-  const nuevoId =
-    ventas.length > 0 ? Math.max(...ventas.map((v) => v.id)) + 1 : 1;
+    await nuevaVenta.save();
 
-  nueva.id = nuevoId;
+    res.status(201).json(nuevaVenta);
+  } catch (error) {
+    console.log(error);
 
-  ventas.push(nueva);
-  await saveVentas(ventas);
-
-  res.status(201).json(nueva);
+    res.status(500).json({
+      mensaje: "Error al guardar venta",
+    });
+  }
 });
 
 router.post("/buscar", async (req, res) => {
