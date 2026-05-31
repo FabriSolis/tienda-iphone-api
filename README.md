@@ -1,60 +1,41 @@
-Tienda de iPhones - Estructuras JSON
+Prueba sin token
 
-Este proyecto representa mi tienda de iPhones utilizando estructuras de datos en formato JSON.
+Solicitud:
 
-Se crearon tres archivos principales:
+POST /ventas
 
-- clientes.json
-- productos.json
-- ventas.json
+Sin enviar el header Authorization.
 
-Se incluyen distintos tipos de datos:
+Resultado:
 
-- Números (id, precio, total)
-- Texto (nombre, descripción, dirección)
-- Booleanos (activo, disponible, entregado)
+{
+  "mensaje": "Token requerido"
+}
+Prueba con token
+Se realiza login.
+Se obtiene el JWT.
+Se envía el token en el header:
+Authorization: Bearer eyJhbGciOiJIUzI1Ni...
+Se ejecuta la compra.
 
-El sistema simula mi tienda de iPhones donde:
+Resultado:
 
-- Los usuarios pueden comprar productos
-- Los productos tienen estado (disponible, reservado, vendido)
-- Las ventas registran las compras realizadas
+{
+  "id": 7,
+  "cliente": "Fabricio",
+  "total": 395
+}
 
-- Node.js
-- Express
+La venta se registra correctamente, demostrando el funcionamiento de la autenticación basada en JWT.
 
-npm install
+Tecnologías Utilizadas
+Node.js
+Express.js
+MongoDB
+Mongoose
+JSON Web Token (JWT)
+bcryptjs
+dotenv
+CORS
 
-npm run dev
-
-Endpoints
-
-Clientes
-
-- GET /clientes obtener todos
-- GET /clientes/:id obtener por id
-- POST /clientes crear cliente
-- POST /clientes/buscar buscar cliente por nombre
-- PUT /clientes/:id actualizar cliente
-- DELETE /clientes/:id eliminar cliente (con integridad)
-
-Productos
-
-- GET /productos → obtener todos
-- GET /productos/:id → obtener por id
-- POST /productos → crear producto
-- POST /productos/buscar → buscar productos por nombre
-- PUT /productos/:id → actualizar producto
-- DELETE /productos/:id → eliminar producto (si no está asociado a ventas)
-
-Ventas
-
-- GET /ventas → obtener todas
-- GET /ventas/:id → obtener por id
-- POST /ventas → crear venta
-- POST /ventas/buscar → buscar ventas por usuario
-- PUT /ventas/:id → actualizar venta
-- DELETE /ventas/:id → eliminar venta
-
-Integridad
-No se permite eliminar un cliente si tiene ventas asociadas.
+Este procedimiento permitió migrar la aplicación desde almacenamiento basado en archivos JSON hacia una arquitectura con base de datos NoSQL, incorporando autenticación segura mediante JWT para proteger las operaciones críticas del sistema.
