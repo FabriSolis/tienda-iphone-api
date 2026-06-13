@@ -1,4 +1,6 @@
 function Cart({ carrito, setCarrito }) {
+  const token = localStorage.getItem("token");
+
   const eliminarProducto = (id) => {
     const nuevoCarrito = carrito.filter((producto) => producto.id !== id);
 
@@ -8,6 +10,11 @@ function Cart({ carrito, setCarrito }) {
   };
 
   const comprar = async () => {
+    if (!token) {
+      alert("Debe iniciar sesión para realizar una compra");
+      return;
+    }
+
     if (carrito.length === 0) {
       alert("El carrito está vacío");
       return;
@@ -24,11 +31,14 @@ function Cart({ carrito, setCarrito }) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(nuevaVenta),
       });
 
-      await response.json();
+      const data = await response.json();
+
+      console.log(data);
 
       alert("Compra realizada");
 
@@ -41,10 +51,18 @@ function Cart({ carrito, setCarrito }) {
       alert("Error al realizar compra");
     }
   };
+
   const total = carrito.reduce((acc, producto) => acc + producto.precio, 0);
+
   return (
     <div className="bg-white rounded-2xl shadow-md p-6 mt-10">
       <h2 className="text-2xl font-bold mb-6">Carrito</h2>
+
+      {!token && (
+        <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 p-3 rounded mb-4">
+          Debe iniciar sesión para realizar una compra.
+        </div>
+      )}
 
       {carrito.length === 0 ? (
         <p className="text-gray-500">El carrito está vacío</p>
@@ -75,7 +93,12 @@ function Cart({ carrito, setCarrito }) {
 
             <button
               onClick={comprar}
-              className="bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition"
+              disabled={!token}
+              className={`px-6 py-3 rounded-xl text-white transition ${
+                token
+                  ? "bg-black hover:bg-gray-800"
+                  : "bg-gray-400 cursor-not-allowed"
+              }`}
             >
               Finalizar compra
             </button>

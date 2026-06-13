@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
+import Login from "./pages/Login";
 
 function App() {
   const [carrito, setCarrito] = useState(() => {
@@ -12,6 +13,7 @@ function App() {
       <h1 className="text-4xl font-bold text-center mb-10">Tienda Online</h1>
 
       <div className="max-w-6xl mx-auto">
+        <Login />
         <Products carrito={carrito} setCarrito={setCarrito} />
 
         <Cart carrito={carrito} setCarrito={setCarrito} />
